@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import './bootstrap-ovverride.scss';
-import UserSingUpPage from './UserSingUpPage'
+import UserSingUpPage from './pages/UserSingUpPage'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
