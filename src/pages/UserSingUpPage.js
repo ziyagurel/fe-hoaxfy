@@ -17,7 +17,7 @@ class UserSignupPage extends React.Component{
         });
     };
 
-    onClickSignUp = event => {
+    onClickSignUp = async event => {
         event.preventDefault();
         const {username, displayName, password} = this.state
         const body ={
@@ -25,16 +25,20 @@ class UserSignupPage extends React.Component{
             displayName,
             password
         };
+
         this.setState({pendingApiCall : true});
-        signup(body)
-        .then((response) => {
-            this.setState({pendingApiCall:false});
-        }).catch(error=> {
-            this.setState({pendingApiCall : false})
-        });
+
+        try{
+            const response = await signup(body);
+            console.log(response);
+        }catch(error){
+
+        }
+        this.setState({pendingApiCall : false})
     }
 
     render(){
+        const {pendingApiCall} = this.state;
         return(
             <div>
                 <form className="container">
@@ -56,8 +60,8 @@ class UserSignupPage extends React.Component{
                         <input className="form-control" name="passwordRepeat" type="password" onChange={this.onChange}/>
                     </div>
                     <div className="text-center">
-                        <button className="btn btn-primary" onClick={this.onClickSignUp} disabled={this.state.pendingApiCall}>
-                        {this.state.pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up</button>
+                        <button className="btn btn-primary" onClick={this.onClickSignUp} disabled={pendingApiCall}>
+                        {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up</button>
                     </div>
                 </form>
             </div>
