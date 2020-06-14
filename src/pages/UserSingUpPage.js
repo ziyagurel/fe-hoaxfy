@@ -14,6 +14,7 @@ class UserSignupPage extends React.Component{
     onChange = event =>{
         const {value,name} = event.target;
         const errors = {...this.errors};
+        errors[name] = undefined;
         this.setState({
             [name] : value,
             errors
@@ -35,14 +36,16 @@ class UserSignupPage extends React.Component{
             const response = await signup(body);
             console.log(response);
         }catch(error){
-            this.setState({errors: error.response.data.validationErrors})
+            if(error.response.data.validationErrors){
+                this.setState({errors: error.response.data.validationErrors})
+            }
         }
         this.setState({pendingApiCall : false})
     }
 
     render(){
         const {pendingApiCall, errors} = this.state;
-        const {username} = errors;
+        const {username, displayName} = errors;
         return(
             <div>
                 <form className="container">
@@ -54,7 +57,8 @@ class UserSignupPage extends React.Component{
                     </div>
                     <div className="form-group">
                         <label>Display Name</label>
-                        <input className="form-control" name="displayName" type="text" onChange={this.onChange}/>
+                        <input className={displayName ? "form-control is-invalid" : "form-control"} name="displayName" type="text" onChange={this.onChange}/>
+                        <div className="invalid-feedback"> {displayName} </div>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
