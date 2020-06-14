@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fe-hoaxfy/static/css/main.85957db9.chunk.css",
+    "main.js": "/fe-hoaxfy/static/js/main.be206a58.chunk.js",
+    "main.js.map": "/fe-hoaxfy/static/js/main.be206a58.chunk.js.map",
+    "runtime-main.js": "/fe-hoaxfy/static/js/runtime-main.5be4e2d3.js",
+    "runtime-main.js.map": "/fe-hoaxfy/static/js/runtime-main.5be4e2d3.js.map",
+    "static/js/2.294e14ff.chunk.js": "/fe-hoaxfy/static/js/2.294e14ff.chunk.js",
+    "static/js/2.294e14ff.chunk.js.map": "/fe-hoaxfy/static/js/2.294e14ff.chunk.js.map",
+    "index.html": "/fe-hoaxfy/index.html",
+    "precache-manifest.1c9e3c6939815716891932eb9323810e.js": "/fe-hoaxfy/precache-manifest.1c9e3c6939815716891932eb9323810e.js",
+    "service-worker.js": "/fe-hoaxfy/service-worker.js",
+    "static/css/main.85957db9.chunk.css.map": "/fe-hoaxfy/static/css/main.85957db9.chunk.css.map",
+    "static/js/2.294e14ff.chunk.js.LICENSE.txt": "/fe-hoaxfy/static/js/2.294e14ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5be4e2d3.js",
+    "static/js/2.294e14ff.chunk.js",
+    "static/css/main.85957db9.chunk.css",
+    "static/js/main.be206a58.chunk.js"
+  ]
+}
