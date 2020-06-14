@@ -13,8 +13,10 @@ class UserSignupPage extends React.Component{
 
     onChange = event =>{
         const {value,name} = event.target;
+        const errors = {...this.errors};
         this.setState({
-            [name] : value
+            [name] : value,
+            errors
         });
     };
 
