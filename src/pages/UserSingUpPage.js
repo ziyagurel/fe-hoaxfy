@@ -1,5 +1,6 @@
 import React from 'react';
 import { signup } from '../api/apiCalls';
+import CustomInput from '../components/CustomInput'
 
 class UserSignupPage extends React.Component{
     state = {
@@ -45,21 +46,13 @@ class UserSignupPage extends React.Component{
 
     render(){
         const {pendingApiCall, errors} = this.state;
-        const {username, displayName} = errors;
+        const {username, displayname} = errors;
         return(
             <div>
                 <form className="container">
                     <h1 className="text-center">Sign Up</h1>
-                    <div className="form-group">
-                        <label>Username</label>
-                        <input className={username ? "form-control is-invalid" : "form-control"} name="username" type="text" onChange={this.onChange}/>
-                        <div className="invalid-feedback"> {username} </div>
-                    </div>
-                    <div className="form-group">
-                        <label>Display Name</label>
-                        <input className={displayName ? "form-control is-invalid" : "form-control"} name="displayName" type="text" onChange={this.onChange}/>
-                        <div className="invalid-feedback"> {displayName} </div>
-                    </div>
+                    <CustomInput name="username" label="Username" error={username} onChange={this.onChange}/>
+                    <CustomInput name="displayname" label="Display Name" error={displayname} onChange={this.onChange}/>
                     <div className="form-group">
                         <label>Password</label>
                         <input className="form-control" name="password" type="password" onChange={this.onChange}/>
