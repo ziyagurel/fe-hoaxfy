@@ -16,6 +16,21 @@ class UserSignupPage extends React.Component{
         const {value,name} = event.target;
         const errors = {...this.errors};
         errors[name] = undefined;
+        if(name === 'password' || name === 'passwordRepeat'){
+            console.log("calisti");
+            if(name === 'password' && value !== this.state.passwordRepeat){
+                errors.passwordRepeat = 'Password mismath';
+                console.log("calisti-1");
+            }
+            else if(name === 'passwordRepeat' && value !== this.state.password){
+                errors.passwordRepeat = 'Password mismath';
+                console.log("calisti-2");
+            }
+            else{
+                errors.passwordRepeat = undefined;
+                console.log("calisti-3");
+            }
+        }
         this.setState({
             [name] : value,
             errors
@@ -46,23 +61,17 @@ class UserSignupPage extends React.Component{
 
     render(){
         const {pendingApiCall, errors} = this.state;
-        const {username, displayname} = errors;
+        const {username, displayName, password, passwordRepeat} = errors;
         return(
             <div>
                 <form className="container">
                     <h1 className="text-center">Sign Up</h1>
                     <CustomInput name="username" label="Username" error={username} onChange={this.onChange}/>
-                    <CustomInput name="displayname" label="Display Name" error={displayname} onChange={this.onChange}/>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input className="form-control" name="password" type="password" onChange={this.onChange}/>
-                    </div>
-                    <div className="form-group">
-                        <label>Password Repeat</label>
-                        <input className="form-control" name="passwordRepeat" type="password" onChange={this.onChange}/>
-                    </div>
+                    <CustomInput name="displayName" label="Display Name" error={displayName} onChange={this.onChange}/>
+                    <CustomInput name="password" label="Password" error={password} onChange={this.onChange} type="password"/>
+                    <CustomInput name="passwordRepeat" label="Password Repeat" error={passwordRepeat} onChange={this.onChange} type="password"/>
                     <div className="text-center">
-                        <button className="btn btn-primary" onClick={this.onClickSignUp} disabled={pendingApiCall}>
+                        <button className="btn btn-primary" onClick={this.onClickSignUp} disabled={pendingApiCall || passwordRepeat !== undefined}>
                         {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} Sign Up</button>
                     </div>
                 </form>
