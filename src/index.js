@@ -5,7 +5,9 @@ import './index.css';
 import './bootstrap-ovverride.scss';
 import UserSingUpPage from './pages/UserSingUpPage'
 import * as serviceWorker from './serviceWorker';
+import './i18n';
 
+//Baslangic Sayfasi belirlenir.
 ReactDOM.render(
   <React.StrictMode>
     <UserSingUpPage />
