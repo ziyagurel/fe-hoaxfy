@@ -1,5 +1,5 @@
 import React from 'react';
-import { signup } from '../api/apiCalls';
+import { signup, changeLanguage } from '../api/apiCalls';
 import CustomInput from '../components/CustomInput';
 import {withTranslation} from 'react-i18next';
 
@@ -55,6 +55,12 @@ class UserSignupPage extends React.Component{
             }
         }
         this.setState({pendingApiCall : false})
+    };
+
+    onChanceLanguage = language => {
+        const {i18n} = this.props;
+        i18n.changeLanguage(language);
+        changeLanguage(language);
     }
 
     render(){
@@ -72,6 +78,10 @@ class UserSignupPage extends React.Component{
                     <div className="text-center">
                         <button className="btn btn-primary" onClick={this.onClickSignUp} disabled={pendingApiCall || passwordRepeat !== undefined}>
                         {pendingApiCall && <span className="spinner-border spinner-border-sm"></span>} {t('Sign Up')}</button>
+                    </div>
+                    <div>
+                        <img src="https://www.countryflags.io/tr/flat/24.png" alt="Turks Flag" onClick={() => this.onChanceLanguage('tr')} style={{cursor:'pointer'}}></img>
+                        <img src="https://www.countryflags.io/us/flat/24.png" alt="USA Flag" onClick={() => this.onChanceLanguage('en')} style={{cursor:'pointer'}}></img>
                     </div>
                 </form>
             </div>
