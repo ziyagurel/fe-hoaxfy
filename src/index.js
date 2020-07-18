@@ -4,14 +4,17 @@ import './index.css';
 //import App from './App';
 import './bootstrap-ovverride.scss';
 import UserSingUpPage from './pages/UserSingUpPage'
+import LoginPage from './pages/LoginPage';
 import * as serviceWorker from './serviceWorker';
 import './i18n';
+import LanguageSelector from './components/LanguageSelector';
 
 //Baslangic Sayfasi belirlenir.
 ReactDOM.render(
-  <React.StrictMode>
-    <UserSingUpPage />
-  </React.StrictMode>,
+  <div>
+    <LoginPage />
+    <LanguageSelector/>
+  </div>,
   document.getElementById('root')
 );
 
